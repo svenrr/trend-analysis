@@ -38,5 +38,5 @@ while True:
  
 st.write("----")
 
-df = pd.read_csv("https://raw.githubusercontent.com/svenrr/good_news_everyone/main/Datasets/dataset_subreddits_for_eda/subreddits.csv")
+df = pd.read_csv("https://people.sc.fsu.edu/~jburkardt/data/csv/addresses.csv")
 st.dataframe(df)
