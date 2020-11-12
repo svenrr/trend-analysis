@@ -1,4 +1,4 @@
-import streamlit 
+import streamlit as st
 from news_scraping import get_urls_from_feed
 
 st.write("# BBC News Scraper")
