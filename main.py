@@ -29,11 +29,9 @@ import datetime
 st.write("# Live Update Test")
 import time
 
-def foo():
-  count = 0
-  count += 1
-  st.write(count)
+count = 0
 
 while True:
-  foo()
+  count += 1
+  st.write(count)
   time.sleep(60)
