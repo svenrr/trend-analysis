@@ -31,6 +31,9 @@ st.write("# Live Update Test")
 df = pd.read_csv("https://people.sc.fsu.edu/~jburkardt/data/csv/addresses.csv")
 st.dataframe(df)
 
+st.write("----")
+st.write("# Live Count")
+
 import time
 
 count = 0
