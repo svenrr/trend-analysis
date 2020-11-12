@@ -12,16 +12,29 @@ import datetime
 #  get_urls_from_feed()
 
 
-pytrends = TrendReq(hl='en-US', tz=360)
-keywords = ["Joe Biden", "Donald Trump"]
-pytrends.build_payload(keywords, timeframe="today 5-y", geo="US")
-df = pytrends.interest_over_time()
+#pytrends = TrendReq(hl='en-US', tz=360)
+#keywords = ["Joe Biden", "Donald Trump"]
+#pytrends.build_payload(keywords, timeframe="today 5-y", geo="US")
+#df = pytrends.interest_over_time()
+#
+#st.write("# Keyword Search")
+#
+#st.dataframe(df)
+#
+#df1 = pytrend.trending_searches(pn='germany')
+#
+#st.write("# Trending Search")
+#st.dataframe(df1)
 
-st.write("# Keyword Search")
+st.write("# Live Update Test")
+import time
 
-st.dataframe(df)
+count = 0
+def foo():
+  st.write("time.ctime()")
+  count += 1
+  st.write(count)
 
-df1 = pytrend.trending_searches(pn='germany')
-
-st.write("# Trending Search")
-st.dataframe(df1)
+while True:
+  foo()
+  time.sleep(60)
