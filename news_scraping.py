@@ -184,6 +184,3 @@ def get_urls_from_feed():
     else:
         with open(path_count, 'w') as txt:
             txt.write(file_count)
-
-
-get_urls_from_feed()
