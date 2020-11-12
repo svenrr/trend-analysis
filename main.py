@@ -29,11 +29,8 @@ import datetime
 st.write("# Live Update Test")
 import time
 
-count = 0
 def foo():
   st.write("time.ctime()")
-  count += 1
-  st.write(count)
 
 while True:
   foo()
