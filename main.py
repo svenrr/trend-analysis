@@ -32,6 +32,7 @@ import time
 def foo():
   count = 0
   count += 1
+  st.write(count)
 
 while True:
   foo()
