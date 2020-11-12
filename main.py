@@ -27,16 +27,16 @@ import datetime
 #st.dataframe(df1)
 
 st.write("# Live Update Test")
-import time
-
-count = 0
-
-while True:
-  count += 1
-  st.write(count)
-  time.sleep(60)
- 
-st.write("----")
+#import time
+#
+#count = 0
+#
+#while True:
+#  count += 1
+#  st.write(count)
+#  time.sleep(60)
+# 
+#st.write("----")
 
 df = pd.read_csv("https://people.sc.fsu.edu/~jburkardt/data/csv/addresses.csv")
 st.dataframe(df)
