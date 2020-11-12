@@ -30,7 +30,8 @@ st.write("# Live Update Test")
 import time
 
 def foo():
-  time.ctime()
+  count = 0
+  count += 1
 
 while True:
   foo()
