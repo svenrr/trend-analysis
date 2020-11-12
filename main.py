@@ -35,3 +35,8 @@ while True:
   count += 1
   st.write(count)
   time.sleep(60)
+ 
+st.write("----")
+
+df = pd.read_csv("https://raw.githubusercontent.com/svenrr/good_news_everyone/main/Datasets/dataset_subreddits_for_eda/subreddits.csv")
+st.dataframe(df)
