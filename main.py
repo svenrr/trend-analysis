@@ -63,10 +63,10 @@ st.write("----")
 st.write("# Google related queries")
 
 pytrend = TrendReq()
-search_topic = st.text_input("Enter a keyword...","Data Science") 
+search_topic = st.text_input("Enter a keyword or topic...","Data Science",key="gtrend") 
 
 def gtrends(keyword):
-    pytrend.build_payload(kw_list=[keyword])
+    pytrend.build_payload(kw_lst=[keyword])
     related_queries = pytrend.related_queries()
     rq = pd.DataFrame(related_queries.get(keyword).get('rising'))
     return rq
@@ -88,7 +88,7 @@ auth = tweepy.OAuthHandler(consumer_key, consumer_key_secret)
 auth.set_access_token(access_token, access_token_secret)
 api = tweepy.API(auth, wait_on_rate_limit=True)
 
-query = st.text_input("Enter a keyword...", "Data Science")
+query = st.text_input("Enter a keyword...", "Data Science", key="twitter")
 
 #query = "Trump"
 max_tweets = 50
