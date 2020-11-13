@@ -93,29 +93,30 @@ ts = pd.DataFrame(pytrend.trending_searches(pn='germany'))
 st.dataframe(ts)
 
 #######################################################################################################################################################
-st.write("----")
-st.write("# Twitter Live Test")
+#st.write("----")
+#st.write("# Twitter Live Test")
 
-# Twitter Developer keys here
-consumer_key = 'NkzGJC5iKyk2FWjDeSAaEBZZa'
-consumer_key_secret = 'BSGX4FEwdreJO1CkoTuKZRH59B56rCK5bt6lTjt0d8DMA4k2D9'
-access_token = '1319633638552752128-VpoEssg71W9hFZa2gxDNNdHeMLMmdG'
-access_token_secret = 'oEfIJ6Le2DFU0pKmrCDvuLfqznPRTMl5qI3RjA7WL075R'
-
-auth = tweepy.OAuthHandler(consumer_key, consumer_key_secret)
-auth.set_access_token(access_token, access_token_secret)
-api = tweepy.API(auth, wait_on_rate_limit=True)
-
-query = st.text_input("Enter a keyword...", "Data Science", key="twitter")
-
-#query = "Trump"
-max_tweets = 50
-searched_tweets = [status for status in tweepy.Cursor(api.search, q=query,tweet_mode='extended').items(max_tweets)]
-search_dict = {"text": [], "author": [], "created_date": []}
-for item in searched_tweets:
-    if not item.retweet or "RT" not in item.full_text:
-        search_dict["text"].append(item.full_text)
-        search_dict["author"].append(item.author.name)
-        search_dict["created_date"].append(item.created_at)
-df_t = pd.DataFrame.from_dict(search_dict)
-st.dataframe(df_t)
+## Twitter Developer keys here
+#consumer_key = 'xxx'
+#consumer_key_secret = 'yyy'
+#access_token = 'zzz'
+#access_token_secret = 'qqq'
+#
+#auth = tweepy.OAuthHandler(consumer_key, consumer_key_secret)
+#auth.set_access_token(access_token, access_token_secret)
+#api = tweepy.API(auth, wait_on_rate_limit=True)
+#
+#query = st.text_input("Enter a keyword...", "Data Science", key="twitter")
+#
+##query = "Trump"
+#max_tweets = 50
+#searched_tweets = [status for status in tweepy.Cursor(api.search, q=query,tweet_mode='extended').items(max_tweets)]
+#search_dict = {"text": [], "author": [], "created_date": []}
+#for item in searched_tweets:
+#    if not item.retweet or "RT" not in item.full_text:
+#        search_dict["text"].append(item.full_text)
+#        search_dict["author"].append(item.author.name)
+#        search_dict["created_date"].append(item.created_at)
+#df_t = pd.DataFrame.from_dict(search_dict)
+#st.dataframe(df_t)
+#
