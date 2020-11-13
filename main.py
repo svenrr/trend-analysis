@@ -3,6 +3,7 @@ import pandas as pd
 from pytrends.request import TrendReq
 import time
 import datetime
+from word_frequency import word_frequency
 
 import praw
 import tweepy
@@ -61,7 +62,7 @@ st.write(len(topic_lst))
 st.write(topic_lst)
 
 st.write("Top 10 keywords:")
-
+word_frequency(". ".join(topic_lst))
 
 #######################################################################################################################################################
 st.write("----")
