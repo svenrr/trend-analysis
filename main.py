@@ -71,16 +71,11 @@ iot.drop("isPartial",axis=1, inplace=True)
 st.dataframe(iot)
 
 st.line_chart(iot)
+##########
 
-#
-#st.write("# Keyword Search")
-#
-#st.dataframe(df)
-#
-#df1 = pytrend.trending_searches(pn='germany')
-#
-#st.write("# Trending Search")
-#st.dataframe(df1)
+st.markdown("**Trending Searches in Germany (Real Time)**")
+ts = pd.DataFrame(pytrend.trending_searches(pn='germany'))
+st.dataframe(ts)
 
 #######################################################################################################################################################
 st.write("----")
