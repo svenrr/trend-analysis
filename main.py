@@ -32,15 +32,10 @@ df = pd.read_csv("https://people.sc.fsu.edu/~jburkardt/data/csv/addresses.csv")
 st.dataframe(df)
 
 st.write("----")
-st.write("# Live Count")
+st.write("# Reddit Live Test")
 
-import time
+r = praw.Reddit(client_id='ddxZYbBilApY5A', client_secret='4rxjgOizdOJlhuyD781bi4tCqH8', user_agent='Henlo')
+stats = r.subreddit(reddit_name).subscribers
+st.write(stats)
 
-count = 0
 
-while True:
-  count += 1
-  st.write(count)
-  time.sleep(60)
- 
-st.write("----")
