@@ -60,7 +60,22 @@ srds = pd.read_csv("https://github.com/svenrr/good_news_everyone/raw/main/Datase
 st.dataframe(srds)
 
 st.write("----")
+st.write("# Google related queries")
 
+pytrend = TrendReq()
+search_topic = st.text_input("Enter a keyword...","Data Science") 
+
+def gtrends(keyword):
+    pytrend.build_payload(kw_list=[keyword])
+    related_queries = pytrend.related_queries()
+    rq = pd.DataFrame(related_queries.get(keyword).get('rising'))
+    return rq
+
+rq_data = gtrends(search_topic)
+st.dataframe(rq_data)
+
+
+st.write("----")
 st.write("# Twitter Live Test")
 
 # Twitter Developer keys here
