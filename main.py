@@ -57,9 +57,9 @@ auth = tweepy.OAuthHandler(consumer_key, consumer_key_secret)
 auth.set_access_token(access_token, access_token_secret)
 api = tweepy.API(auth, wait_on_rate_limit=True)
 
-kw = st.text_input("Enter a keyword...")
+query = st.text_input("Enter a keyword...")
 
-query = "Trump"
+#query = "Trump"
 max_tweets = 10
 searched_tweets = [status for status in tweepy.Cursor(api.search, q=query,tweet_mode='extended').items(max_tweets)]
 search_dict = {"text": [], "author": [], "created_date": []}
