@@ -57,7 +57,7 @@ auth = tweepy.OAuthHandler(consumer_key, consumer_key_secret)
 auth.set_access_token(access_token, access_token_secret)
 api = tweepy.API(auth, wait_on_rate_limit=True)
 
-query = st.text_input("Enter a keyword...")
+query = st.text_input("Enter a keyword...", "Data Science")
 
 #query = "Trump"
 max_tweets = 10
