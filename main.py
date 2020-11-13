@@ -3,6 +3,7 @@ import pandas as pd
 from pytrends.request import TrendReq
 import time
 import datetime
+
 import praw
 
 #from news_scraping import get_urls_from_feed
@@ -38,5 +39,3 @@ st.write("# Reddit Live Test")
 r = praw.Reddit(client_id='ddxZYbBilApY5A', client_secret='4rxjgOizdOJlhuyD781bi4tCqH8', user_agent='Henlo')
 stats = r.subreddit(reddit_name).subscribers
 st.write(stats)
-
-
