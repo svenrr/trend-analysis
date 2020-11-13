@@ -23,7 +23,7 @@ st.write("In the following, different sources are used to quickly gain an overvi
 st.markdown("**ToDo:**")
 st.markdown("* Analyze comments with VaderScore")
 st.markdown("* Just show englisch posts & comments")
-st.markdown("* Show news subbreddits with information like subs, hot keywords & trending topcis")
+st.markdown("* Show news subbreddits with information like subs, hot keywords & trending topcis --> view documentation")
 st.markdown("* Use google trends")
 st.markdown("* Enable search with specific keywords")
 #######################################################################################################################################################
