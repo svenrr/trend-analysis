@@ -26,15 +26,15 @@ def word_frequency(article_text):
     st.write("---"*40)
     st.write("**Words that appear more than three times:**")
 
-    for i in sort_orders:
-        if i[1] > 3:
-            st.write(i[0], i[1])
+    #for i in sort_orders:
+    #    if i[1] > 3:
+    #        st.write(i[0], i[1])
 
     # Save the results in a dataframe and plot it
-    #wf_dic = dict()
-    #for i in sort_orders: 
-    #    if i[1] > 3:
-    #        wf_dic.update({i[0] : i[1]})
+    wf_dic = dict()
+    for i in sort_orders: 
+        if i[1] > 3:
+            wf_dic.update({i[0] : i[1]})
     
     wf_df = pd.DataFrame(wf_dic, index=["Word Frequencies"])
     st.dataframe(wf_df)
