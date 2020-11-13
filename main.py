@@ -54,7 +54,7 @@ subr_lst = [i for i in srds_top5.reddit]
 topic_lst = []
 
 for subr in subr_lst:
-    for submission in reddit.subreddit(subr).hot(limit=10):
+    for submission in r.subreddit(subr).hot(limit=10):
         topic_lst.append(submission.title)
 
 st.write(len(topic_lst))
