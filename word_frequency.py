@@ -37,3 +37,4 @@ def word_frequency(article_text):
     #        wf_dic.update({i[0] : i[1]})
     
     wf_df = pd.DataFrame(wf_dic, index=["Word Frequencies"])
+    st.dataframe(wf_df)
