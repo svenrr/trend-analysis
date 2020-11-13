@@ -5,6 +5,7 @@ import time
 import datetime
 
 import praw
+import tweepy
 
 #from news_scraping import get_urls_from_feed
 #
@@ -41,3 +42,29 @@ reddit_name = "WorldNews"
 r = praw.Reddit(client_id='ddxZYbBilApY5A', client_secret='4rxjgOizdOJlhuyD781bi4tCqH8', user_agent='Henlo')
 stats = r.subreddit(reddit_name).subscribers
 st.write(stats)
+
+st.write("----")
+
+st.write("# Twitter Live Test")
+
+# Twitter Developer keys here
+consumer_key = 'NkzGJC5iKyk2FWjDeSAaEBZZa'
+consumer_key_secret = 'BSGX4FEwdreJO1CkoTuKZRH59B56rCK5bt6lTjt0d8DMA4k2D9'
+access_token = '1319633638552752128-VpoEssg71W9hFZa2gxDNNdHeMLMmdG'
+access_token_secret = 'oEfIJ6Le2DFU0pKmrCDvuLfqznPRTMl5qI3RjA7WL075R'
+
+auth = tweepy.OAuthHandler(consumer_key, consumer_key_secret)
+auth.set_access_token(access_token, access_token_secret)
+api = tweepy.API(auth, wait_on_rate_limit=True)
+
+query = 'British Airways'
+max_tweets = 10
+searched_tweets = [status for status in tweepy.Cursor(api.search, q=query,tweet_mode='extended').items(max_tweets)]
+search_dict = {"text": [], "author": [], "created_date": []}
+for item in searched_tweets:
+    if not item.retweet or "RT" not in item.full_text:
+        search_dict["text"].append(item.full_text)
+        search_dict["author"].append(item.author.name)
+        search_dict["created_date"].append(item.created_at)
+df_t = pd.DataFrame.from_dict(search_dict)
+st.dataframe(df_t)
