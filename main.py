@@ -36,6 +36,8 @@ st.dataframe(df)
 st.write("----")
 st.write("# Reddit Live Test")
 
+reddit_name = "WorldNews"
+
 r = praw.Reddit(client_id='ddxZYbBilApY5A', client_secret='4rxjgOizdOJlhuyD781bi4tCqH8', user_agent='Henlo')
 stats = r.subreddit(reddit_name).subscribers
 st.write(stats)
