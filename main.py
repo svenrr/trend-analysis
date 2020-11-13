@@ -29,6 +29,9 @@ import tweepy
 #st.write("# Trending Search")
 #st.dataframe(df1)
 
+st.write("# Trend topics & content ideas)
+st.write("In the following, different sources are used to quickly gain an overview of current topics in the world or a specific industry. These insights can also be used by journalists, bloggers, etc. to report on topics that are currently of particular interest and most talked about.")
+
 st.write("# Live Update Test")
 
 df = pd.read_csv("https://people.sc.fsu.edu/~jburkardt/data/csv/addresses.csv")
@@ -60,7 +63,7 @@ api = tweepy.API(auth, wait_on_rate_limit=True)
 query = st.text_input("Enter a keyword...", "Data Science")
 
 #query = "Trump"
-max_tweets = 10
+max_tweets = 50
 searched_tweets = [status for status in tweepy.Cursor(api.search, q=query,tweet_mode='extended').items(max_tweets)]
 search_dict = {"text": [], "author": [], "created_date": []}
 for item in searched_tweets:
