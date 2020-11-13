@@ -5,6 +5,8 @@ import math
 import en_core_web_md
 import streamlit as st
 
+nlp = en_core_web_md.load()
+
 def word_frequency(article_text):
     from spacy.lang.en.stop_words import STOP_WORDS
     stopwords = list(STOP_WORDS)
