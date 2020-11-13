@@ -29,8 +29,16 @@ import tweepy
 #st.write("# Trending Search")
 #st.dataframe(df1)
 
-st.write("# Trend topics & content ideas)
+st.write("# Trend topics & content ideas")
 st.write("In the following, different sources are used to quickly gain an overview of current topics in the world or a specific industry. These insights can also be used by journalists, bloggers, etc. to report on topics that are currently of particular interest and most talked about.")
+
+st.markdown("**ToDo:**")
+st.markdown("* Analyze comments with VaderScore")
+st.markdown("* Analyze comments with VaderScore")
+st.markdown("* Analyze comments with VaderScore")
+st.markdown("* Analyze comments with VaderScore")
+
+st.write("----")
 
 st.write("# Live Update Test")
 
