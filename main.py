@@ -54,6 +54,11 @@ r = praw.Reddit(client_id='ddxZYbBilApY5A', client_secret='4rxjgOizdOJlhuyD781bi
 stats = r.subreddit(reddit_name).subscribers
 st.write(stats)
 
+
+st.markdown("**Relevant subreddits for any kind of news**")
+srds = pd.read_csv("https://github.com/svenrr/good_news_everyone/raw/main/Datasets/dataset_subreddits_for_eda/subreddits.csv",encoding="cp1252")
+st.dataframe(srds)
+
 st.write("----")
 
 st.write("# Twitter Live Test")
