@@ -59,7 +59,7 @@ api = tweepy.API(auth, wait_on_rate_limit=True)
 
 kw = st.text_input("Enter a keyword...")
 
-query = kw
+query = "Trump"
 max_tweets = 10
 searched_tweets = [status for status in tweepy.Cursor(api.search, q=query,tweet_mode='extended').items(max_tweets)]
 search_dict = {"text": [], "author": [], "created_date": []}
