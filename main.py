@@ -57,8 +57,10 @@ auth = tweepy.OAuthHandler(consumer_key, consumer_key_secret)
 auth.set_access_token(access_token, access_token_secret)
 api = tweepy.API(auth, wait_on_rate_limit=True)
 
-query = 'British Airways'
-max_tweets = 10
+kw = st.text_input("Enter a keyword...")
+
+query = kw
+max_tweets = 100
 searched_tweets = [status for status in tweepy.Cursor(api.search, q=query,tweet_mode='extended').items(max_tweets)]
 search_dict = {"text": [], "author": [], "created_date": []}
 for item in searched_tweets:
