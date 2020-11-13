@@ -4,6 +4,7 @@ from string import punctuation
 import math
 import en_core_web_md
 import streamlit as st
+import pandas as pd 
 
 nlp = en_core_web_md.load()
 
@@ -15,7 +16,7 @@ def word_frequency(article_text):
     
     word_freqs = {}
     for word in doc:
-        if (word.text not in stopwords and word.text not in punctuation and word.text not in '“”'):
+        if (word.text not in stopwords and word.text not in punctuation and word.text not in '“”‘’'):
             if word.text not in word_freqs.keys():
                 word_freqs[word.text] = 1
             else:
@@ -30,9 +31,9 @@ def word_frequency(article_text):
             st.write(i[0], i[1])
 
     # Save the results in a dataframe and plot it
-    wf_dic = dict()
-    for i in sort_orders: 
-        if i[1] > 3:
-            wf_dic.update({i[0] : i[1]})
+    #wf_dic = dict()
+    #for i in sort_orders: 
+    #    if i[1] > 3:
+    #        wf_dic.update({i[0] : i[1]})
     
     wf_df = pd.DataFrame(wf_dic, index=["Word Frequencies"])
