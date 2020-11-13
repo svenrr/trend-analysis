@@ -61,12 +61,17 @@ def gtrends(keyword):
 rq_data = gtrends(search_topic)
 st.dataframe(rq_data)
 #######
+
 st.markdown("**Interest over time**")
 keywords = ["Joe Biden", "Donald Trump"]
 interest_over_time = pytrend.build_payload(keywords, timeframe="today 5-y", geo="US")
 iot = pd.DataFrame(pytrend.interest_over_time())
+iot.drop("isPartial",axis=1, inplace=True)
 
 st.dataframe(iot)
+
+st.line_chart(iot)
+
 #
 #st.write("# Keyword Search")
 #
