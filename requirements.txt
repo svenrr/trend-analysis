@@ -5,3 +5,4 @@
 
 pytrends
 praw
+tweepy
