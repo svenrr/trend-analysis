@@ -1,3 +1,10 @@
+import spacy
+from collections import Counter
+from string import punctuation
+import math
+import en_core_web_md
+import streamlit as st
+
 def word_frequency(article_text):
     from spacy.lang.en.stop_words import STOP_WORDS
     stopwords = list(STOP_WORDS)
