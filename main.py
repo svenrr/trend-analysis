@@ -3,6 +3,7 @@ import pandas as pd
 from pytrends.request import TrendReq
 import time
 import datetime
+import spacy
 from word_frequency import word_frequency
 
 import praw
