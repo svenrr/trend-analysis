@@ -60,6 +60,9 @@ for subr in subr_lst:
 st.write(len(topic_lst))
 st.write(topic_lst)
 
+st.write("Top 10 keywords:")
+
+
 #######################################################################################################################################################
 st.write("----")
 st.write("# Google related queries")
