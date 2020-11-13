@@ -66,7 +66,7 @@ pytrend = TrendReq()
 search_topic = st.text_input("Enter a keyword or topic...","Data Science",key="gtrend") 
 
 def gtrends(keyword):
-    pytrend.build_payload(kw_lst=[keyword])
+    pytrend.build_payload(kw_list=[keyword])
     related_queries = pytrend.related_queries()
     rq = pd.DataFrame(related_queries.get(keyword).get('rising'))
     return rq
