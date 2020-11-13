@@ -3,6 +3,7 @@ import pandas as pd
 from pytrends.request import TrendReq
 import time
 import datetime
+import praw
 
 #from news_scraping import get_urls_from_feed
 #
