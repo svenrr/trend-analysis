@@ -15,20 +15,6 @@ import tweepy
 #  get_urls_from_feed()
 
 
-#pytrends = TrendReq(hl='en-US', tz=360)
-#keywords = ["Joe Biden", "Donald Trump"]
-#pytrends.build_payload(keywords, timeframe="today 5-y", geo="US")
-#df = pytrends.interest_over_time()
-#
-#st.write("# Keyword Search")
-#
-#st.dataframe(df)
-#
-#df1 = pytrend.trending_searches(pn='germany')
-#
-#st.write("# Trending Search")
-#st.dataframe(df1)
-
 st.write("# Trend topics & content ideas")
 st.write("In the following, different sources are used to quickly gain an overview of current topics in the world or a specific industry. These insights can also be used by journalists, bloggers, etc. to report on topics that are currently of particular interest and most talked about.")
 
@@ -37,14 +23,14 @@ st.markdown("* Analyze comments with VaderScore")
 st.markdown("* Just show englisch posts & comments")
 st.markdown("* Show news subbreddits with information like subs & trending topcis")
 st.markdown("* Use google trends")
-
+#######################################################################################################################################################
 st.write("----")
 
 st.write("# Live Update Test")
 
 df = pd.read_csv("https://people.sc.fsu.edu/~jburkardt/data/csv/addresses.csv")
 st.dataframe(df)
-
+#######################################################################################################################################################
 st.write("----")
 st.write("# Reddit Live Test")
 
@@ -59,6 +45,7 @@ st.markdown("**Relevant subreddits for any kind of news**")
 srds = pd.read_csv("https://github.com/svenrr/good_news_everyone/raw/main/Datasets/dataset_subreddits_for_eda/subreddits.csv",encoding="cp1252")
 st.dataframe(srds)
 
+#######################################################################################################################################################
 st.write("----")
 st.write("# Google related queries")
 
@@ -73,8 +60,24 @@ def gtrends(keyword):
 
 rq_data = gtrends(search_topic)
 st.dataframe(rq_data)
+#######
+st.markdown("**Interest over time**")
+keywords = ["Joe Biden", "Donald Trump"]
+interest_over_time = pytrend.build_payload(keywords, timeframe="today 5-y", geo="US")
+iot = pd.DataFrame(pytrend.interest_over_time())
 
+st.dataframe(iot)
+#
+#st.write("# Keyword Search")
+#
+#st.dataframe(df)
+#
+#df1 = pytrend.trending_searches(pn='germany')
+#
+#st.write("# Trending Search")
+#st.dataframe(df1)
 
+#######################################################################################################################################################
 st.write("----")
 st.write("# Twitter Live Test")
 
