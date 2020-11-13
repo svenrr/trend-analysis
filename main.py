@@ -40,10 +40,25 @@ r = praw.Reddit(client_id='ddxZYbBilApY5A', client_secret='4rxjgOizdOJlhuyD781bi
 stats = r.subreddit(reddit_name).subscribers
 st.write(stats)
 
-
+###########
 st.markdown("**Relevant subreddits for any kind of news**")
 srds = pd.read_csv("https://github.com/svenrr/good_news_everyone/raw/main/Datasets/dataset_subreddits_for_eda/subreddits.csv",encoding="cp1252")
 st.dataframe(srds)
+
+########
+st.write("We take the top 5 subreddits with the most subscribers and search for the top 5 hot topics in there")
+srds_top5 = srds.sort_values(by=" subs",ascending=False)[0:5]
+st.dataframe(srds_top5)
+
+subr_lst = [i for i in srds_top5.reddit]
+topic_lst = []
+
+for subr in subr_lst:
+    for submission in reddit.subreddit(subr).hot(limit=10):
+        topic_lst.append(submission.title)
+
+st.write(len(topic_lst))
+st.write(topic_lst)
 
 #######################################################################################################################################################
 st.write("----")
