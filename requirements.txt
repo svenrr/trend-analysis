@@ -3,6 +3,7 @@
 #urlextract
 #bs4
 
+spacy
 pytrends
 praw
 tweepy
