@@ -28,21 +28,13 @@ st.markdown("* Show news subbreddits with information like subs, hot keywords & 
 st.markdown("* Use google trends")
 st.markdown("* Enable search with specific keywords")
 #######################################################################################################################################################
-st.write("----")
 
-st.write("# Live Update Test")
 
-df = pd.read_csv("https://people.sc.fsu.edu/~jburkardt/data/csv/addresses.csv")
-st.dataframe(df)
 #######################################################################################################################################################
 st.write("----")
 st.write("# Reddit Live Test")
 
-reddit_name = "WorldNews"
-
 r = praw.Reddit(client_id='ddxZYbBilApY5A', client_secret='4rxjgOizdOJlhuyD781bi4tCqH8', user_agent='Henlo')
-stats = r.subreddit(reddit_name).subscribers
-st.write(stats)
 
 ###########
 st.markdown("**Relevant subreddits for any kind of news**")
@@ -54,6 +46,7 @@ st.write("We take the top 5 subreddits with the most subscribers and search for 
 srds_top5 = srds.sort_values(by=" subs",ascending=False)[0:5]
 st.dataframe(srds_top5)
 
+
 subr_lst = [i for i in srds_top5.reddit]
 topic_lst = []
 
@@ -61,7 +54,6 @@ for subr in subr_lst:
     for submission in r.subreddit(subr).hot(limit=10):
         topic_lst.append(submission.title)
 
-st.write(len(topic_lst))
 st.write(topic_lst)
 
 st.write("Top 10 keywords:")
@@ -77,7 +69,7 @@ search_topic = st.text_input("Enter a keyword or topic...","Data Science",key="g
 def gtrends(keyword):
     pytrend.build_payload(kw_list=[keyword])
     related_queries = pytrend.related_queries()
-    rq = pd.DataFrame(related_queries.get(keyword).get('rising'))
+    rq = pd.DataFrame(related_queries.get(keyword).get('trending'))
     return rq
 
 rq_data = gtrends(search_topic)
@@ -85,6 +77,7 @@ st.dataframe(rq_data)
 #######
 
 st.markdown("**Interest over time**")
+iot_kws = st.
 keywords = ["Joe Biden", "Donald Trump"]
 interest_over_time = pytrend.build_payload(keywords, timeframe="today 5-y", geo="US")
 iot = pd.DataFrame(pytrend.interest_over_time())
