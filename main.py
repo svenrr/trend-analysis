@@ -80,9 +80,10 @@ st.dataframe(rq_data)
 
 st.markdown("**Interest over time (US)**")
 sb_tf = st.selectbox("Select a timeframe", ["today 5-y"] , key="sb_tf")
-iot_kws = st.text_input("Enter keywords and use comma as delimiter","python, java, html, javascript, sql]", key="giot")
+iot_kws = st.text_input("Enter keywords and use comma as delimiter","python, java, html, javascript, sql", key="giot")
 keywords = iot_kws.split("delimiter")
-st.write(type(iot_kws))
+st.write(keywords)
+st.write(type(keywords))
 #keywords = ['python', 'java', 'html', 'javascript', 'sql']
 interest_over_time = pytrend.build_payload(keywords, timeframe=sb_tf, geo="US")
 iot = pd.DataFrame(pytrend.interest_over_time())
