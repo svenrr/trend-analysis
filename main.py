@@ -69,7 +69,7 @@ search_topic = st.text_input("Enter a keyword or topic...","Data Science",key="g
 def gtrends(keyword):
     pytrend.build_payload(kw_list=[keyword])
     related_queries = pytrend.related_queries()
-    rq = pd.DataFrame(related_queries.get(keyword).get('trending'))
+    rq = pd.DataFrame(related_queries.get(keyword).get('top'))
     return rq
 
 rq_data = gtrends(search_topic)
@@ -77,9 +77,9 @@ st.dataframe(rq_data)
 #######
 
 st.markdown("**Interest over time**")
-iot_kws = st.text_input("Enter keywords and use comma as delimiter","python, java, html, javascript, sql")
+iot_kws = st.text_input("Enter keywords and use comma as delimiter","python, java, html, javascript, sql", key="giot")
 keywords = iot_kws
-interest_over_time = pytrend.build_payload(keywords, timeframe="today 5-y", geo="US")
+interest_over_time = pytrend.build_payload([keywords], timeframe="today 5-y", geo="US")
 iot = pd.DataFrame(pytrend.interest_over_time())
 iot.drop("isPartial",axis=1, inplace=True)
 
