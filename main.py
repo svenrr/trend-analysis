@@ -94,8 +94,8 @@ st.dataframe(iot)
 st.line_chart(iot)
 ##########
 
-st.markdown("**Trending Searches in Germany (Real Time)**")
-country = st.text_input("Enter a country","germany")
+st.markdown("**Trending Searches (Real Time)**")
+country = st.text_input("Enter a country","united_states")
 ts = pd.DataFrame(pytrend.trending_searches(pn=country))
 st.dataframe(ts)
 
