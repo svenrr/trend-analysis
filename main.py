@@ -103,7 +103,7 @@ st.dataframe(ts)
 
 st.markdown("# Top10 Twitter Trending Topics (USA)")
 twitter_trends = pd.read_csv("https://docs.google.com/spreadsheets/d/1ZQmt6uL-MYrb8UacoOhRGaBTUzlelPOz6eti5kqeWWc/export?gid=0&format=csv")
-st.write("Last update: {}".format(df.datetime[0]))
+st.write("Last update: {}".format(df["datetime"][0]))
 st.dataframe(twitter_trends[["trend", "tweet_volume"]])                             
 
 #################
