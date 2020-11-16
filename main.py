@@ -105,8 +105,8 @@ st.dataframe(ts)
 
 st.markdown("# Top10 Twitter Trending Topics (USA)")
 twitter_trends = pd.read_csv("https://docs.google.com/spreadsheets/d/1ZQmt6uL-MYrb8UacoOhRGaBTUzlelPOz6eti5kqeWWc/export?gid=0&format=csv")
-twitter_trends = twitter_trends.tail(10)
-st.write("Last update: {}".format(twitter_trends["date_time"][-1]))
+twitter_trends = twitter_trends.tail(10).reset_index(drop=True)
+st.write("Last update: {}".format(twitter_trends["date_time"][0]))
 st.dataframe(twitter_trends[["trends", "tweet_volume"]])      
 
 c = alt.Chart(twitter_trends).mark_bar().encode(x="tweet_volume:Q", y="trends:O").properties(width=600, height=400) #sort="tweet_volume:Q"
