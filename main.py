@@ -66,7 +66,7 @@ st.write("# Google related queries")
 pytrend = TrendReq()
 search_topic = st.text_input("Enter a keyword or topic...","Data Science",key="gtrend") 
 
-sb_torr = st.selectbox("Select one option", ["top", "rising"])
+sb_torr = st.selectbox("Select one option", ["top", "rising"], key="sb_torr")
 
 def gtrends(keyword, torr): #top or rising?
     pytrend.build_payload(kw_list=[keyword])
@@ -79,11 +79,12 @@ st.dataframe(rq_data)
 #######
 
 st.markdown("**Interest over time (US)**")
+sb_tf = st.selectbox("Select a timeframe", ["today 5-y"] , key="sb_tf")
 iot_kws = st.text_input("Enter keywords and use comma as delimiter","['python', 'java', 'html', 'javascript', 'sql']", key="giot")
 #keywords = iot_kws
-st.write(iot_kws)
+st.write(type(iot_kws))
 keywords = ['python', 'java', 'html', 'javascript', 'sql']
-interest_over_time = pytrend.build_payload(keywords, timeframe="today 5-y", geo="US")
+interest_over_time = pytrend.build_payload(keywords, timeframe=sb_tf, geo="US")
 iot = pd.DataFrame(pytrend.interest_over_time())
 iot.drop("isPartial",axis=1, inplace=True)
 
