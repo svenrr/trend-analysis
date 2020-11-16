@@ -71,7 +71,7 @@ sb_torr = st.selectbox("Select one option", ["top", "rising"])
 def gtrends(keyword, torr): #top or rising?
     pytrend.build_payload(kw_list=[keyword])
     related_queries = pytrend.related_queries()
-    rq = pd.DataFrame(related_queries.get(keyword).get('top'))
+    rq = pd.DataFrame(related_queries.get(keyword).get(torr))
     return rq
 
 rq_data = gtrends(search_topic, sb_torr)
@@ -79,7 +79,7 @@ st.dataframe(rq_data)
 #######
 
 st.markdown("**Interest over time (US)**")
-iot_kws = st.text_input("Enter keywords and use comma as delimiter","['python, java, html, javascript, sql']", key="giot")
+iot_kws = st.text_input("Enter keywords and use comma as delimiter","['python', 'java', 'html', 'javascript', 'sql']", key="giot")
 keywords = iot_kws
 interest_over_time = pytrend.build_payload(keywords, timeframe="today 5-y", geo="US")
 iot = pd.DataFrame(pytrend.interest_over_time())
