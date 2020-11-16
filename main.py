@@ -108,7 +108,7 @@ twitter_trends = pd.read_csv("https://docs.google.com/spreadsheets/d/1ZQmt6uL-MY
 st.write("Last update: {}".format(twitter_trends["date_time"][0]))
 st.dataframe(twitter_trends[["trends", "tweet_volume"]])      
 
-c = alt.Chart(twitter_trends).mark_bar().encode(x="tweet_volume:Q", y="trends:O").properties(width=300, height=200) #sort="tweet_volume:Q"
+c = alt.Chart(twitter_trends).mark_bar().encode(x="tweet_volume:Q", y="trends:O").properties(width=600, height=400) #sort="tweet_volume:Q"
 st.altair_chart(c)
 
 #################
