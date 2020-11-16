@@ -98,7 +98,17 @@ st.markdown("**Trending Searches in Germany (Real Time)**")
 ts = pd.DataFrame(pytrend.trending_searches(pn='germany'))
 st.dataframe(ts)
 
+
 #######################################################################################################################################################
+
+st.markdown("# Top10 Twitter Trending Topics (USA)")
+twitter_trends = pd.read_csv("https://docs.google.com/spreadsheets/d/1ZQmt6uL-MYrb8UacoOhRGaBTUzlelPOz6eti5kqeWWc/export?gid=0"&format=csv") 
+st.write("Last update: {}".format(df.datetime[0]))
+st.dataframe(twitter_trends[["trend", "tweet_volume"])                             
+
+#################
+
+
 #st.write("----")
 #st.write("# Twitter Live Test")
 
