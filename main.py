@@ -80,7 +80,8 @@ st.dataframe(rq_data)
 
 st.markdown("**Interest over time (US)**")
 iot_kws = st.text_input("Enter keywords and use comma as delimiter","['python', 'java', 'html', 'javascript', 'sql']", key="giot")
-keywords = iot_kws
+#keywords = iot_kws
+keywords = ['python', 'java', 'html', 'javascript', 'sql']
 interest_over_time = pytrend.build_payload(keywords, timeframe="today 5-y", geo="US")
 iot = pd.DataFrame(pytrend.interest_over_time())
 iot.drop("isPartial",axis=1, inplace=True)
