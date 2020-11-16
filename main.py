@@ -109,7 +109,7 @@ st.write("Last update: {}".format(twitter_trends["date_time"][0]))
 st.dataframe(twitter_trends[["trends", "tweet_volume"]])      
 
 
-tt_chart = alt.Chart(source).mark_bar().encode(x=twitter_trends["tweet_volume"], y=twitter_trends["trends"])
+tt_chart = alt.Chart(twitter_trends).mark_bar().encode(x=twitter_trends["tweet_volume"], y=twitter_trends["trends"])
 st.altair_chart(tt_chart)
 
 
