@@ -107,12 +107,6 @@ rt = pd.DataFrame(pytrend.top_charts(rt_date, hl='en-US', tz=300, geo=rt_geo)) #
 rt.drop("exploreQuery",axis=1, inplace=True)
 st.dataframe(rt)
 
-##########
-
-st.markdown("**Suggestions**")
-sugg = pd.DataFrame(pytrend.suggestions(search_topic))
-st.dataframe(sugg)
-
 #######################################################################################################################################################
 
 st.markdown("# Top10 Twitter Trending Topics (USA)")
