@@ -15,10 +15,8 @@ st.write("In the following, different sources are used to quickly gain an overvi
 
 st.markdown("**ToDo:**")
 st.markdown("* Analyze comments with VaderScore")
-st.markdown("* Just show englisch posts & comments")
 st.markdown("* Show news subbreddits with information like subs, hot keywords & trending topcis --> view documentation")
-st.markdown("* Use google trends")
-st.markdown("* Enable search with specific keywords")
+
 #######################################################################################################################################################
 
 
@@ -47,7 +45,8 @@ topic_lst = []
 for subr in subr_lst:
     for submission in r.subreddit(subr).hot(limit=10):
         topic_lst.append(submission.title)
-if st.checkox("Show full text"):
+        
+if st.checkbox("Show full text"):
     st.write(topic_lst)
 
 st.write("Top 10 keywords:")
