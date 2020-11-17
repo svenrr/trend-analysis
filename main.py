@@ -6,16 +6,8 @@ import datetime
 import spacy
 import altair as alt
 from word_frequency import word_frequency
-
 import praw
 import tweepy
-
-#from news_scraping import get_urls_from_feed
-#
-#st.write("# BBC News Scraper")
-#
-#if st.button("Fetch..."): 
-#  get_urls_from_feed()
 
 
 st.write("# Trend topics & content ideas")
@@ -79,7 +71,7 @@ st.dataframe(rq_data)
 #######
 
 st.markdown("**Interest over time (US)**")
-sb_tf = st.selectbox("Select a timeframe", ["today 5-y"] , key="sb_tf")
+sb_tf = st.selectbox("Select a timeframe", ["today 5-y", "today 3-y", "today 12-m", "today 6-m", "today 3-m", "today 1-m"] , key="sb_tf")
 iot_kws = st.text_input("Enter keywords and use comma as delimiter","python, java, html, javascript, sql", key="giot")
 keywords = list(iot_kws.split(","))
 #keywords = ['python', 'java', 'html', 'javascript', 'sql']
