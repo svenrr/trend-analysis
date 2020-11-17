@@ -102,13 +102,15 @@ st.dataframe(ts)
 ##########
 
 st.markdown("**Related Topics**")
-rt = pd.DataFrame(pytrend.related_topics())
+rt = pd.DataFrame(pytrend.related_topics().get("Data Science"))
 st.dataframe(rt)
 
 ##########
 
-st.markdown("**Top Charts (2019, Global)**")
-rt = pd.DataFrame(pytrend.top_charts(2019, hl='en-US', tz=300, geo='GLOBAL')) #or tz=360?
+st.markdown("**Top Charts (Global)**")
+rt_date = st.textinput("Enter a date (YYYYMM or YYYY)","202010")
+rt = pd.DataFrame(pytrend.top_charts(rt_date, hl='en-US', tz=300, geo='GLOBAL')) #or tz=360?
+rt.drop("exploreQuery",axis=1, inplace=True)
 st.dataframe(rt)
 
 ##########
