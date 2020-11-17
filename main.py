@@ -76,7 +76,6 @@ rd_tf = st.radio("Select google property (default = web searches", ["","news", "
 sb_tf = st.selectbox("Select a timeframe", ["today 5-y", "today 3-y", "today 12-m", "today 3-m", "today 1-m"] , key="sb_tf")
 iot_kws = st.text_input("Enter keywords and use comma as delimiter","python, java, html, javascript, sql", key="giot")
 keywords = list(iot_kws.split(","))
-#keywords = ['python', 'java', 'html', 'javascript', 'sql']
 interest_over_time = pytrend.build_payload(keywords, timeframe=sb_tf, geo="US", gprop=rd_tf)
 iot = pd.DataFrame(pytrend.interest_over_time())
 iot.drop("isPartial",axis=1, inplace=True)
@@ -102,8 +101,9 @@ st.dataframe(ts)
 ##########
 
 st.markdown("**Top Charts (Global)**")
-rt_date = st.slider('Enter a date', min_value=2010, max_value=2019, value=2019, step=1)
-rt = pd.DataFrame(pytrend.top_charts(rt_date, hl='en-US', tz=300, geo='GLOBAL')) #or tz=360?
+rt_date = st.slider('Select a date', min_value=2010, max_value=2019, value=2019, step=1)
+rt_geo = st.selectbox("Choose a location", ["GLOBAL", "US", "DE"], key="rt_geo")
+rt = pd.DataFrame(pytrend.top_charts(rt_date, hl='en-US', tz=300, geo=rt_geo)) #or tz=360?
 rt.drop("exploreQuery",axis=1, inplace=True)
 st.dataframe(rt)
 
