@@ -34,11 +34,12 @@ srds = pd.read_csv("https://github.com/svenrr/good_news_everyone/raw/main/Datase
 st.dataframe(srds)
 
 ########
+
 st.write("We take the top 5 subreddits with the most subscribers and search for the top 5 hot topics in there")
 srds_top5 = srds.sort_values(by=" subs",ascending=False)[0:5]
 st.dataframe(srds_top5)
 
-r_cb = st.checkbox("Select subreddits", [i for i in srds_top5.reddit])
+r_ms = st.multiselect("Select subreddits", [i for i in srds_top5.reddit])
 
 subr_lst = [i for i in srds_top5.reddit]
 topic_lst = []
@@ -46,8 +47,8 @@ topic_lst = []
 for subr in subr_lst:
     for submission in r.subreddit(subr).hot(limit=10):
         topic_lst.append(submission.title)
-
-st.write(topic_lst)
+if st.checkox("Show full text"):
+    st.write(topic_lst)
 
 st.write("Top 10 keywords:")
 word_frequency(". ".join(topic_lst))
