@@ -54,7 +54,7 @@ word_frequency(". ".join(topic_lst))
 #######################################################################################################################################################
 
 st.write("----")
-st.write("# Google related queries")
+st.write("## Google related queries")
 
 pytrend = TrendReq()
 search_topic = st.text_input("Enter a keyword or topic...","Data Science",key="gtrend") 
@@ -69,9 +69,10 @@ def gtrends(keyword, torr): #top or rising?
 
 rq_data = gtrends(search_topic, sb_torr)
 st.dataframe(rq_data)
+
 #######
 
-st.markdown("**Interest over time (US)**")
+st.markdown("## Interest over time (US)")
 rd_tf = st.radio("Select google property (default = web searches", ["","news", "youtube"])
 sb_tf = st.selectbox("Select a timeframe", ["today 5-y", "today 3-y", "today 12-m", "today 3-m", "today 1-m"] , key="sb_tf")
 iot_kws = st.text_input("Enter keywords and use comma as delimiter","python, java, html, javascript, sql", key="giot")
@@ -87,20 +88,20 @@ st.line_chart(iot)
 
 #########
 
-st.markdown("**Interest by region**")
+st.markdown("## Interest by region")
 ibr = pytrend.interest_by_region(resolution='REGION', inc_low_vol=True, inc_geo_code=False)
 st.dataframe(ibr)
 
 ##########
 
-st.markdown("**Trending Searches (Real Time)**")
+st.markdown("## Trending Searches (Real Time)")
 country = st.text_input("Enter a country","united_states", key="country")
 ts = pd.DataFrame(pytrend.trending_searches(pn=country))
 st.dataframe(ts)
 
 ##########
 
-st.markdown("**Top Charts (Global)**")
+st.markdown("## Top Charts (Global)")
 rt_date = st.slider('Select a date', min_value=2010, max_value=2019, value=2019, step=1)
 rt_geo = st.selectbox("Choose a location", ["GLOBAL", "US", "DE"], key="rt_geo")
 rt = pd.DataFrame(pytrend.top_charts(rt_date, hl='en-US', tz=300, geo=rt_geo)) #or tz=360?
