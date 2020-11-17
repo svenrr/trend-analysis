@@ -52,6 +52,7 @@ st.write("Top 10 keywords:")
 word_frequency(". ".join(topic_lst))
 
 #######################################################################################################################################################
+
 st.write("----")
 st.write("# Google related queries")
 
@@ -86,6 +87,7 @@ st.line_chart(iot)
 
 
 #########
+
 st.markdown("**Interest by region**")
 ibr = pytrend.interest_by_region(resolution='REGION', inc_low_vol=True, inc_geo_code=False)
 st.dataframe(ibr)
@@ -96,6 +98,25 @@ st.markdown("**Trending Searches (Real Time)**")
 country = st.text_input("Enter a country","united_states")
 ts = pd.DataFrame(pytrend.trending_searches(pn=country))
 st.dataframe(ts)
+
+##########
+
+st.markdown("**Related Topics**")
+rt = pd.DataFrame(pytrend.related_topics)
+st.dataframe(rt)
+
+##########
+
+st.markdown("**Top Charts (2019, Global)**")
+rt = pd.DataFrame(pytrend.top_charts(2019, hl='en-US', tz=300, geo='GLOBAL')) #or tz=360?
+st.dataframe(rt)
+
+##########
+
+st.markdown("**Suggestions**")
+sugg = pd.DataFrame(pytrend.suggestions(search_topic))
+st.dataframe(sugg)
+
 
 #######################################################################################################################################################
 
