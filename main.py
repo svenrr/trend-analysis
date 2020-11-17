@@ -95,7 +95,7 @@ st.dataframe(ibr)
 ##########
 
 st.markdown("**Trending Searches (Real Time)**")
-country = st.text_input("Enter a country","united_states")
+country = st.text_input("Enter a country","united_states", key="country")
 ts = pd.DataFrame(pytrend.trending_searches(pn=country))
 st.dataframe(ts)
 
@@ -108,7 +108,7 @@ st.dataframe(rt)
 ##########
 
 st.markdown("**Top Charts (Global)**")
-rt_date = st.textinput("Enter a date (YYYYMM or YYYY)","202010")
+rt_date = st.text_input("Enter a date (YYYYMM or YYYY)","202010", key="rt_date")
 rt = pd.DataFrame(pytrend.top_charts(rt_date, hl='en-US', tz=300, geo='GLOBAL')) #or tz=360?
 rt.drop("exploreQuery",axis=1, inplace=True)
 st.dataframe(rt)
