@@ -102,7 +102,7 @@ st.dataframe(ts)
 ##########
 
 st.markdown("**Related Topics**")
-rt = pd.DataFrame(pytrend.related_topics)
+rt = pd.DataFrame(pytrend.related_topics())
 st.dataframe(rt)
 
 ##########
