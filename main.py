@@ -83,19 +83,19 @@ iot.drop("isPartial",axis=1, inplace=True)
 st.dataframe(iot)
 
 st.line_chart(iot)
-##########
-
-st.markdown("**Trending Searches (Real Time)**")
-country = st.text_input("Enter a country","united_states")
-ts = pd.DataFrame(pytrend.trending_searches(pn=country))
-st.dataframe(ts)
 
 
 #########
 st.markdown("**Interest by region**")
 ibr = pytrend.interest_by_region(resolution='COUNTRY', inc_low_vol=True, inc_geo_code=False)
 st.dataframe(ibr)
-st.map(ibr)
+
+##########
+
+st.markdown("**Trending Searches (Real Time)**")
+country = st.text_input("Enter a country","united_states")
+ts = pd.DataFrame(pytrend.trending_searches(pn=country))
+st.dataframe(ts)
 
 #######################################################################################################################################################
 
