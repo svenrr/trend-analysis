@@ -76,7 +76,7 @@ sb_tf = st.selectbox("Select a timeframe", ["today 5-y", "today 3-y", "today 12-
 iot_kws = st.text_input("Enter keywords and use comma as delimiter","python, java, html, javascript, sql", key="giot")
 keywords = list(iot_kws.split(","))
 #keywords = ['python', 'java', 'html', 'javascript', 'sql']
-interest_over_time = pytrend.build_payload(keywords, timeframe=sb_tf, geo="US", gprop=)
+interest_over_time = pytrend.build_payload(keywords, timeframe=sb_tf, geo="US", gprop=rd_tf)
 iot = pd.DataFrame(pytrend.interest_over_time())
 iot.drop("isPartial",axis=1, inplace=True)
 
