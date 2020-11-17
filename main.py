@@ -33,13 +33,16 @@ st.dataframe(srds)
 
 ########
 
-st.write("We take the top 5 subreddits with the most subscribers and search for the top 5 hot topics in there")
+st.write("We take the top 5 subreddits with the most subscribers and search for the top 5 hot topics in there. You can change that if you want.")
 srds_top5 = srds.sort_values(by=" subs",ascending=False)[0:5]
 st.dataframe(srds_top5)
 
-r_ms = st.multiselect("Select subreddits", [i for i in srds_top5.reddit])
+r_ms = st.multiselect("Select subreddits", [i for i in srds.reddit], default=[i for i in srds_top5.reddit])
 
-subr_lst = [i for i in srds_top5.reddit]
+#subr_lst = [i for i in srds_top5.reddit]
+st.write(type(r_ms))
+subr_lst = r_ms 
+
 topic_lst = []
 
 for subr in subr_lst:
