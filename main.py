@@ -101,14 +101,8 @@ st.dataframe(ts)
 
 ##########
 
-st.markdown("**Related Topics**")
-rt = pd.DataFrame(pytrend.related_topics().get("Data Science"))
-st.dataframe(rt)
-
-##########
-
 st.markdown("**Top Charts (Global)**")
-rt_date = st.text_input("Enter a date (YYYYMM or YYYY)","202010", key="rt_date")
+rt_date = st.slider('Enter a date', min_value=2010, max_value=2019, value=2019, step=1)
 rt = pd.DataFrame(pytrend.top_charts(rt_date, hl='en-US', tz=300, geo='GLOBAL')) #or tz=360?
 rt.drop("exploreQuery",axis=1, inplace=True)
 st.dataframe(rt)
@@ -118,7 +112,6 @@ st.dataframe(rt)
 st.markdown("**Suggestions**")
 sugg = pd.DataFrame(pytrend.suggestions(search_topic))
 st.dataframe(sugg)
-
 
 #######################################################################################################################################################
 
