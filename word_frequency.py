@@ -38,6 +38,5 @@ def word_frequency(article_text):
             wf_dic.update({i[0] : i[1]})
     
     wf_df = pd.DataFrame(wf_dic, index=["Word Frequencies"])
-    st.dataframe(wf_df)
-    wf_plot = alt.Chart(wf_df.T).mark_bar().encode(x="Word Frequencies:Q").properties(width=600, height=400) 
-    st.altair_chart(wf_plot)
+    st.dataframe(wf_df) 
+    
