@@ -87,7 +87,7 @@ st.line_chart(iot)
 
 #########
 st.markdown("**Interest by region**")
-ibr = pytrend.interest_by_region(resolution='COUNTRY', inc_low_vol=True, inc_geo_code=False)
+ibr = pytrend.interest_by_region(resolution='REGION', inc_low_vol=True, inc_geo_code=False)
 st.dataframe(ibr)
 
 ##########
