@@ -5,6 +5,7 @@ import math
 import en_core_web_md
 import streamlit as st
 import pandas as pd 
+import altair as alt
 
 nlp = en_core_web_md.load()
 
