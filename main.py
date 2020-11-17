@@ -33,7 +33,7 @@ st.dataframe(srds)
 
 ########
 
-st.write("We take the top 5 subreddits with the most subscribers and search for the top 5 hot topics in there. You can change that if you want.")
+st.write("We take the top 5 subreddits with the most subscribers and search for the top 10 hot topics in there. You can change that if you want.")
 
 srds_top5 = srds.sort_values(by=" subs",ascending=False)[0:5]
 st.dataframe(srds_top5)
