@@ -95,6 +95,7 @@ st.dataframe(ts)
 st.markdown("**Interest by region**")
 ibr = pytrend.interest_by_region(resolution='COUNTRY', inc_low_vol=True, inc_geo_code=False)
 st.dataframe(ibr)
+st.map(ibr)
 
 #######################################################################################################################################################
 
