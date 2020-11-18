@@ -72,7 +72,7 @@ word_frequency(". ".join(topic_lst))
 
 st.markdown("### Just a few tests")
 search_lst = []
-for submission in reddit.subreddit("all").search("data science"):
+for submission in r.subreddit("all").search("data science"):
     search_lst.append(submission.title)
     
 st.write(len(search_lst))
