@@ -6,6 +6,8 @@ import en_core_web_md
 import streamlit as st
 import pandas as pd 
 import altair as alt
+from wordcloud import WordCloud
+import matplotlib.pyplot as plt
 
 nlp = en_core_web_md.load()
 
@@ -40,3 +42,16 @@ def word_frequency(article_text):
     wf_df = pd.DataFrame(wf_dic, index=["Word Frequencies"])
     st.dataframe(wf_df) 
     
+    # Create and generate a word cloud image:
+    wc_txt = ""
+    for k,v in wf.items(): 
+      tmp = k + " " 
+      wc_txt += (tmp*v)
+        
+    wordcloud = WordCloud().generate(wc_txt)
+
+    # Display the generated image:
+    plt.imshow(wordcloud, interpolation='bilinear')
+    plt.axis("off")
+    plt.show()
+    st.pyplot()
