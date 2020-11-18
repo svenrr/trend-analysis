@@ -72,8 +72,8 @@ word_frequency(". ".join(topic_lst))
 
 st.markdown("### Search posts about a specific keyword")
 r_search_input = st.text_input("Enter a keyword", "bitcoin")
-r_search_sort = st.selectbox("Select sorting option", ["relevance", "hot", "top", "new", "comments"])
-r_search_time = st.selectbox("Select time filter option", ["all", "day", "month", "week", "year"] 
+r_search_sort = st.selectbox("Select sorting option", ["relevance", "hot", "top", "new", "comments"], key="r_search_sort")
+r_search_time = st.selectbox("Select time filter option", ["all", "day", "month", "week", "year"], key="r_search_time") 
 r_search_output = st.slider("How many results should be displayed?", min_value=5, max_value=100, value=10, step=5)
 
 #reddit_search_dict = {"subreddit": [], "title": [], "upvote_ratio": [], "num_comments": []}
