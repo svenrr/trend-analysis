@@ -62,7 +62,7 @@ if st.checkbox("Show full text"):
     st.write(topic_lst)
 
 reddit_df = pd.DataFrame(reddit_dict)
-st.dataframe(reddit_df.drop(labels="title", axis=0))
+st.dataframe(reddit_df.drop(columns="title", axis=0))
 
 st.write("Number of comments: ", reddit_df[reddit_df["subreddit"] == "WorldNews"].num_comments.sum(axis=0))
     
