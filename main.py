@@ -108,7 +108,7 @@ st.dataframe(rq_data)
 #######
 
 st.markdown("## Interest over time (US)")
-rd_tf = st.radio("Select google property (default = web searches", ["","news", "youtube"])
+rd_tf = st.radio("Select google property (default = web searches)", ["","news", "youtube"])
 sb_tf = st.selectbox("Select a timeframe", ["today 5-y", "today 3-y", "today 12-m", "today 3-m", "today 1-m"] , key="sb_tf")
 iot_kws = st.text_input("Enter keywords and use comma as delimiter","python, java, html, javascript, sql", key="giot")
 keywords = list(iot_kws.split(","))
