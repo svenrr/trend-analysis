@@ -53,4 +53,5 @@ def word_frequency(article_text):
     # Display the generated image:
     pywc = plt.imshow(wordcloud, interpolation='bilinear')
     plt.axis("off")
+    plt.show()
     st.pyplot(pywc)
