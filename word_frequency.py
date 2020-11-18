@@ -48,10 +48,9 @@ def word_frequency(article_text):
       tmp = k + " " 
       wc_txt += (tmp*int(v))
         
-    wordcloud = WordCloud().generate(wc_txt)
+    wordcloud = WordCloud(background_color='white').generate(wc_txt)
 
     # Display the generated image:
-    plt.imshow(wordcloud, interpolation='bilinear')
+    pywc = plt.imshow(wordcloud, interpolation='bilinear')
     plt.axis("off")
-    plt.show()
-    st.pyplot()
+    st.pyplot(pywc)
