@@ -70,13 +70,18 @@ word_frequency(". ".join(topic_lst))
 
 #######################################################################################################################################################
 
-st.markdown("### Just a few tests")
+st.markdown("### Search posts about a specific keyword")
+
 search_lst = []
+n_comms_count = 0
 for submission in r.subreddit("all").search("data science"):
     search_lst.append(submission.title)
+    n_comms_count += submission.num_comments
+    #add upvote_ratio or score
     
 st.write(len(search_lst))
-st.write(search_lst[0])
+st.write(n_comms_count)
+st.write(search_lst[0:10])
 
 #######################################################################################################################################################
 
