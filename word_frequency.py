@@ -46,7 +46,7 @@ def word_frequency(article_text):
     wc_txt = ""
     for k,v in wf_df.items(): 
       tmp = k + " " 
-      wc_txt += (tmp*v)
+      wc_txt += (tmp*int(v))
         
     wordcloud = WordCloud().generate(wc_txt)
 
