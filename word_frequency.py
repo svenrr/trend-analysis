@@ -9,6 +9,8 @@ import altair as alt
 from wordcloud import WordCloud
 import matplotlib.pyplot as plt
 
+st.set_option('deprecation.showPyplotGlobalUse', False)
+
 nlp = en_core_web_md.load()
 
 def word_frequency(article_text):
