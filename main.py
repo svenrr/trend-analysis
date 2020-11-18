@@ -8,7 +8,7 @@ import altair as alt
 from word_frequency import word_frequency
 import praw
 import tweepy
-
+pd.set_option('display.max_colwidth', -1)
 
 st.write("# Trend topics & content ideas")
 st.write("In the following, different sources are used to quickly gain an overview of current topics in the world or a specific industry. These insights can also be used by journalists, bloggers, etc. to report on topics that are currently of particular interest and most talked about.")
@@ -62,7 +62,7 @@ if st.checkbox("Show full text"):
     st.write(topic_lst)
 
 reddit_df = pd.DataFrame(reddit_dict)
-st.dataframe(reddit_df.drop(columns="title", axis=0))
+st.dataframe(reddit_df)#.drop(columns="title", axis=0))
 
 st.write("Number of comments: ", reddit_df[reddit_df["subreddit"] == "WorldNews"].num_comments.sum(axis=0))
     
