@@ -64,7 +64,7 @@ if st.checkbox("Show full text"):
 reddit_df = pd.DataFrame(reddit_dict)
 st.dataframe(reddit_df)
 
-reddit_df[reddit_df["subreddit"] == "WorldNews"].num_comments.sum(axis=0)
+st.write(reddit_df[reddit_df["subreddit"] == "WorldNews"].num_comments.sum(axis=0))
     
 st.write("Top 10 keywords:")
 word_frequency(". ".join(topic_lst))
