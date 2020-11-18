@@ -71,9 +71,12 @@ word_frequency(". ".join(topic_lst))
 #######################################################################################################################################################
 
 st.markdown("### Just a few tests")
-for yyy in r.domain("bbc.com").hot(): 
-    st.write(yyy)
-
+search_lst = []
+for submission in reddit.subreddit("all").search("data science"):
+    search_lst.append(submission.title))
+    
+st.write(len(search_lst))
+st.write(search_lst[0])
 #######################################################################################################################################################
 
 st.write("----")
