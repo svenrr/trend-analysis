@@ -24,7 +24,9 @@ st.markdown("* Show news subbreddits with information like subs, hot keywords & 
 st.write("----")
 st.write("# Reddit Live Test")
 
-r = praw.Reddit(client_id='ddxZYbBilApY5A', client_secret='4rxjgOizdOJlhuyD781bi4tCqH8', user_agent='Henlo')
+r_details = pd.read_csv("https://docs.google.com/spreadsheets/d/1WO4GedbP8xiNuLhZc20k51DrCNAmKpL4Uit15pNEqe0/export?gid=0&format=csv")
+
+r = praw.Reddit(client_id=r_details.client_id[0], client_secret=r_details.client_secret[0], user_agent='Henlo')
 
 ###########
 st.markdown("**Relevant subreddits for any kind of news**")
