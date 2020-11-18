@@ -29,6 +29,7 @@ r_details = pd.read_csv("https://docs.google.com/spreadsheets/d/1WO4GedbP8xiNuLh
 r = praw.Reddit(client_id=r_details.client_id[0], client_secret=r_details.client_secret[0], user_agent='Henlo')
 
 ###########
+
 st.markdown("**Relevant subreddits for any kind of news**")
 srds = pd.read_csv("https://github.com/svenrr/good_news_everyone/raw/main/Datasets/dataset_subreddits_for_eda/subreddits.csv",encoding="cp1252")
 st.dataframe(srds)
@@ -45,15 +46,24 @@ r_ms = st.multiselect("Select subreddits", [i for i in srds.reddit], default=[i 
 #subr_lst = [i for i in srds_top5.reddit]
 subr_lst = r_ms 
 topic_lst = []
+reddit_dict = {"subreddit": [], "title": [], "upvote_ratio": [], "num_comments": []}
 
 for subr in subr_lst:
     for submission in r.subreddit(subr).hot(limit=10):
         topic_lst.append(submission.title)
+        reddit_dict["subreddit"].append(subr)
+        reddit_dict["title"].append(submission.title)
+        reddit_dict["upvote_ratio"].append(submission.upvote_ratio)
+        reddit_dict["num_comments"].append(submission.num_comments)
+       #reddit_dict["score"].append(submission.score)
 
 st.write("Number of total submissions: {}".format(len(topic_lst)))
 if st.checkbox("Show full text"):
     st.write(topic_lst)
 
+reddit_df = pd.DataFrame(reddit_dict)
+st.dataframe(reddit_df)
+    
 st.write("Top 10 keywords:")
 word_frequency(". ".join(topic_lst))
 
