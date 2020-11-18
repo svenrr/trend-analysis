@@ -79,14 +79,12 @@ r_search_output = st.slider("How many results should be displayed?", min_value=5
 #reddit_search_dict = {"subreddit": [], "title": [], "upvote_ratio": [], "num_comments": []}
 
 search_lst = []
-n_comms_count = 0
 for submission in r.subreddit("all").search(r_search_input, sort=r_search_sort, time_filter=r_search_time):
     search_lst.append(submission.title)
-    n_comms_count += submission.num_comments
     #add upvote_ratio or score
     #add id/url to find post
 
-st.write(search_lst[0:r_search_output])
+st.write(search_lst[0:int(r_search_output)])
 
 #######################################################################################################################################################
 
