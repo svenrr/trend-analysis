@@ -44,7 +44,7 @@ def word_frequency(article_text):
     
     # Create and generate a word cloud image:
     wc_txt = ""
-    for k,v in wf.items(): 
+    for k,v in wf_df.items(): 
       tmp = k + " " 
       wc_txt += (tmp*v)
         
