@@ -28,7 +28,7 @@ def word_frequency(article_text):
                 word_freqs[word.text] += 1
                 
     sort_orders = sorted(word_freqs.items(), key=lambda x: x[1], reverse=True)
-    st.write("---"*40)
+    #st.write("---"*40)
     st.write("**Words that appear more than three times:**")
 
     #for i in sort_orders:
