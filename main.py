@@ -77,16 +77,22 @@ r_search_sort = st.selectbox("Select sorting option", ["relevance", "hot", "top"
 r_search_time = st.selectbox("Select time filter option", ["all", "day", "month", "week", "year"], key="r_search_time") 
 r_search_output = st.slider("How many results should be displayed?", min_value=5, max_value=100, value=10, step=5)
 
-#reddit_search_dict = {"subreddit": [], "title": [], "upvote_ratio": [], "num_comments": []}
+reddit_search_dict = {"title": [], "score": [], "url": []}#, "num_comments": [], "upvote_ratio": []}
 
-search_lst = []
+#search_lst = []
 for submission in r.subreddit("all").search(r_search_input, sort=r_search_sort, time_filter=r_search_time):
-    search_lst.append(submission.title)
+    reddit_search_dict["title"].append(submission.title)
+    reddit_search_dict["score"].append(submission.score)
+    reddit_search_dict["permalink"].append(submission.permalink)
+    #search_lst.append(submission.title)
     #add upvote_ratio or score
     #add id/url to find post
 
+test_title_text = f'[{reddit_search_dict["title"][0]}]({reddit_search_dict["url"][0]})'
+st.markdown(test_title_text)
+    
 r_search_df = pd.DataFrame({"submissions": search_lst})
-st.write(search_lst[0:r_search_output])
+#st.write(search_lst[0:r_search_output])
 st.table(r_search_df.iloc[0:r_search_output])
 
 #######################################################################################################################################################
