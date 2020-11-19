@@ -62,7 +62,7 @@ if st.checkbox("Show full text"):
     st.write(topic_lst)
 
 st.beta_expander('Show full text')
-    with st.beta_expander('Show full text'):
+with st.beta_expander('Show full text'):
     st.write(topic_lst)
 
 reddit_df = pd.DataFrame(reddit_dict)
