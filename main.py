@@ -118,7 +118,7 @@ sb_torr = st.selectbox("Select one option", ["top", "rising"], key="sb_torr") # 
     
 pytrend.build_payload(kw_list=[search_topic])
 related_queries = pytrend.related_queries()
-rq_df = pd.DataFrame(related_queries.get(kw_list).get(sb_torr))
+rq_df = pd.DataFrame(related_queries.get(search_topic).get(sb_torr))
 
 st.dataframe(rq_df)
 
