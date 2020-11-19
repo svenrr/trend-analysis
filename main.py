@@ -67,7 +67,7 @@ reddit_df = pd.DataFrame(reddit_dict)
 with st.beta_expander('Show full text'): # Hide the output
     st.table(reddit_dict["title"])
     
-with st.beta_expander('Show full text'): # Show additional information like num. of comments
+with st.beta_expander('Show more information'): # Show additional information like num. of comments
     st.dataframe(reddit_df)#.drop(columns="title", axis=0)) 
 
 #st.write("Number of comments: ", reddit_df[reddit_df["subreddit"] == "WorldNews"].num_comments.sum(axis=0))
@@ -147,7 +147,7 @@ st.dataframe(ts)
 
 ##########
 
-st.markdown("## Top Charts (Global)")
+st.markdown("## Top Charts (past years)")
 rt_date = st.slider('Select a date', min_value=2010, max_value=2019, value=2019, step=1)
 rt_geo = st.selectbox("Choose a location", ["GLOBAL", "US", "DE"], key="rt_geo")
 rt = pd.DataFrame(pytrend.top_charts(rt_date, hl='en-US', tz=300, geo=rt_geo)) #or tz=360?
@@ -158,11 +158,11 @@ st.dataframe(rt)
 st.write("----")
 st.markdown("# Twitter")
 
-st.markdown("## Top10 Twitter Trending Topics (USA)")
+st.markdown("## Top 10 Twitter Trending Topics (USA)")
 twitter_trends = pd.read_csv("https://docs.google.com/spreadsheets/d/1ZQmt6uL-MYrb8UacoOhRGaBTUzlelPOz6eti5kqeWWc/export?gid=0&format=csv")
 twitter_trends = twitter_trends.tail(10).reset_index(drop=True)
 st.write("Last update: {}".format(twitter_trends["date_time"][0]))
-st.dataframe(twitter_trends[["trends", "tweet_volume"]])      
+#st.dataframe(twitter_trends[["trends", "tweet_volume"]])      
 
 tt_plot = alt.Chart(twitter_trends).mark_bar().encode(x="tweet_volume:Q", y="trends:O").properties(width=600, height=400) #sort="tweet_volume:Q"
 st.altair_chart(tt_plot)
