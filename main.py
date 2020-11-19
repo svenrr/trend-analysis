@@ -8,6 +8,7 @@ import altair as alt
 from word_frequency import word_frequency
 import praw
 import tweepy
+import base64
 
 #######################################################################################################################################################
 # function to download generated dataframes as csv file 
