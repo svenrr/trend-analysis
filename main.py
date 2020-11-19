@@ -73,9 +73,9 @@ reddit_df = pd.DataFrame(reddit_dict)
 
 with st.beta_expander('Show full text'): # Hide the output
     st.table(reddit_dict["title"])
-    
+
+st.markdown(get_table_download_link(reddit_df), unsafe_allow_html=True)
 with st.beta_expander('Show more information'): # Show additional information like num. of comments
-    st.markdown(get_table_download_link(reddit_df), unsafe_allow_html=True)
     st.dataframe(reddit_df)#.drop(columns="title", axis=0)) 
 
 #st.write("Number of comments: ", reddit_df[reddit_df["subreddit"] == "WorldNews"].num_comments.sum(axis=0))
