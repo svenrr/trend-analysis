@@ -83,7 +83,7 @@ reddit_search_dict = {"title": [], "score": [], "url": []}#, "num_comments": [],
 for submission in r.subreddit("all").search(r_search_input, sort=r_search_sort, time_filter=r_search_time):
     reddit_search_dict["title"].append(submission.title)
     reddit_search_dict["score"].append(submission.score)
-    reddit_search_dict["url"].append(submission.permalink)
+    reddit_search_dict["url"].append("www.reddit.com" + submission.permalink)
     #search_lst.append(submission.title)
     #add upvote_ratio or score
     #add id/url to find post
@@ -91,7 +91,7 @@ for submission in r.subreddit("all").search(r_search_input, sort=r_search_sort, 
 test_title_text = f'[{reddit_search_dict["title"][0]}]({reddit_search_dict["url"][0]})'
 st.markdown(test_title_text)
     
-r_search_df = pd.DataFrame({reddit_search_dict})
+r_search_df = pd.DataFrame(reddit_search_dict)
 r_search_df.drop(column="url", axis=1, inplace=True)
 #st.write(search_lst[0:r_search_output])
 st.table(r_search_df.iloc[0:r_search_output])
