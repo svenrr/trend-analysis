@@ -19,18 +19,15 @@ def get_table_download_link(df, filename="filename.csv"):
     """
     csv = df.to_csv(index=False)
     b64 = base64.b64encode(csv.encode()).decode()  # some strings <-> bytes conversions necessary here
-    href = f'<a href="data:file/csv;base64,{b64}" download=filename>Download as csv file</a>'
+    href = f'<a href="data:file/csv;base64,{b64}" download={filename}>Download as csv file</a>'
     return href
 
 ########################################################################################################################################################
 
 st.write("# Trend topics & content ideas")
-st.write("In the following, different sources are used to quickly gain an overview of current topics in the world or a specific industry. These insights can also be used by journalists, bloggers, etc. to report on topics that are currently of particular interest and most talked about.")
-
-st.markdown("## Navigation")
-st.markdown("[* Reddit](#reddit)")
-st.markdown("[* Google](#google)")
-st.markdown("[* Twitter](#twitter)")
+st.write('''In the following, different sources are used to quickly gain an overview of current topics in the world or a specific industry. 
+            These insights can also be used by journalists, bloggers, etc. to report on topics that are currently of particular interest and most talked about. 
+            Currently, information can be displayed via Google Trends, Twitter and Reddit. Bigger tables can also be downloaded directly as csv files.''')
 
 #######################################################################################################################################################
 
