@@ -87,9 +87,6 @@ for submission in r.subreddit("all").search(r_search_input, sort=r_search_sort, 
     #search_lst.append(submission.title)
     #add upvote_ratio or score
     #add id/url to find post
-
-tessst_df = pd.DataFrame({"test": f'[{reddit_search_dict["title"][0]}]({reddit_search_dict["url"][0]})'})
-st.table(tessst_df)
     
 r_search_df = pd.DataFrame(reddit_search_dict)
 r_search_df.drop(columns="url", axis=1, inplace=True)
