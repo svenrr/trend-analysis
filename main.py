@@ -12,14 +12,14 @@ import base64
 
 #######################################################################################################################################################
 # function to download generated dataframes as csv file 
-def get_table_download_link(df):
+def get_table_download_link(df, filename="filename.csv"):
     """Generates a link allowing the data in a given panda dataframe to be downloaded
     in:  dataframe
     out: href string
     """
     csv = df.to_csv(index=False)
     b64 = base64.b64encode(csv.encode()).decode()  # some strings <-> bytes conversions necessary here
-    href = f'<a href="data:file/csv;base64,{b64}" download="myfilename.csv">Download csv file</a>'
+    href = f'<a href="data:file/csv;base64,{b64}" download=filename>Download as csv file</a>'
     return href
 
 ########################################################################################################################################################
@@ -75,8 +75,8 @@ reddit_df = pd.DataFrame(reddit_dict)
 with st.beta_expander('Show full text'): # Hide the output
     st.table(reddit_dict["title"])
 
-st.markdown(get_table_download_link(reddit_df), unsafe_allow_html=True)
-with st.beta_expander('Show more information'): # Show additional information like num. of comments
+with st.beta_expander('Show more information & optional download'): # Show additional information like num. of comments
+    st.markdown(get_table_download_link(reddit_df), filename="reddit_news.csv" unsafe_allow_html=True)
     st.dataframe(reddit_df)#.drop(columns="title", axis=0)) 
 
 #st.write("Number of comments: ", reddit_df[reddit_df["subreddit"] == "WorldNews"].num_comments.sum(axis=0))
@@ -106,6 +106,7 @@ r_search_df = pd.DataFrame(reddit_search_dict)
 r_search_df.drop(columns="url", axis=1, inplace=True)
 #st.write(search_lst[0:r_search_output])
 st.table(r_search_df.iloc[0:r_search_output])
+st.markdown(get_table_download_link(r_search_df.iloc[0:r_search_output]), filename="reddit_search.csv" unsafe_allow_html=True)
 
 #######################################################################################################################################################
 st.markdown("# Google")
@@ -142,6 +143,7 @@ st.line_chart(iot)
 
 with st.beta_expander('Show more details'): # Hide the output / dataframe which was used to create the lineplot
     st.dataframe(iot)
+    st.markdown(get_table_download_link(iot), filename="google_interest_over_time.csv" unsafe_allow_html=True)
     st.markdown("**Interest by region**")
     ibr = pytrend.interest_by_region(resolution='REGION', inc_low_vol=True, inc_geo_code=False)
     st.dataframe(ibr)
