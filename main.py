@@ -32,7 +32,7 @@ r = praw.Reddit(client_id=r_details.client_id[0], client_secret=r_details.client
 
 #st.markdown("**Relevant subreddits for any kind of news**")
 srds = pd.read_csv("https://github.com/svenrr/good_news_everyone/raw/main/Datasets/dataset_subreddits_for_eda/subreddits.csv",encoding="cp1252")
-with st.beta_expander('**Relevant subreddits for any kind of news**'):
+with st.beta_expander('Relevant subreddits for any kind of news'):
     st.dataframe(srds)
 
 ########
