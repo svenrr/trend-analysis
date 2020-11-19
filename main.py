@@ -14,6 +14,7 @@ st.write("# Trend topics & content ideas")
 st.write("In the following, different sources are used to quickly gain an overview of current topics in the world or a specific industry. These insights can also be used by journalists, bloggers, etc. to report on topics that are currently of particular interest and most talked about.")
 
 st.markdown("**ToDo:**")
+st.markdown("* Add cache")
 st.markdown("* Analyze comments with VaderScore")
 st.markdown("* Show news subbreddits with information like subs, hot keywords & trending topcis --> view documentation")
 
@@ -86,7 +87,7 @@ for submission in r.subreddit("all").search(r_search_input, sort=r_search_sort, 
 
 r_search_df = pd.DataFrame({"submissions": search_lst})
 st.write(search_lst[0:r_search_output])
-st.table(r_search_df)
+st.table(r_search_df.iloc[0:r_search_output])
 
 #######################################################################################################################################################
 
