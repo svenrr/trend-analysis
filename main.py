@@ -30,9 +30,10 @@ r = praw.Reddit(client_id=r_details.client_id[0], client_secret=r_details.client
 
 ###########
 
-st.markdown("**Relevant subreddits for any kind of news**")
+#st.markdown("**Relevant subreddits for any kind of news**")
 srds = pd.read_csv("https://github.com/svenrr/good_news_everyone/raw/main/Datasets/dataset_subreddits_for_eda/subreddits.csv",encoding="cp1252")
-st.dataframe(srds)
+with st.beta_expander('**Relevant subreddits for any kind of news**'):
+    st.dataframe(srds)
 
 ########
 
@@ -58,10 +59,7 @@ for subr in subr_lst:
        #reddit_dict["score"].append(submission.score)
 
 st.write("Number of total submissions: {}".format(len(topic_lst)))
-if st.checkbox("Show full text"):
-    st.write(topic_lst)
 
-st.beta_expander('Show full text')
 with st.beta_expander('Show full text'):
     st.write(topic_lst)
 
