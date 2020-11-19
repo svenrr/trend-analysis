@@ -8,7 +8,7 @@ import altair as alt
 from word_frequency import word_frequency
 import praw
 import tweepy
-pd.set_option('display.max_colwidth', -1)
+
 
 st.write("# Trend topics & content ideas")
 st.write("In the following, different sources are used to quickly gain an overview of current topics in the world or a specific industry. These insights can also be used by journalists, bloggers, etc. to report on topics that are currently of particular interest and most talked about.")
@@ -21,7 +21,7 @@ st.markdown("* Show news subbreddits with information like subs, hot keywords & 
 
 #######################################################################################################################################################
 st.write("----")
-st.write("# Reddit Live Test")
+st.write("# Reddit")
 
 r_details = pd.read_csv("https://docs.google.com/spreadsheets/d/1WO4GedbP8xiNuLhZc20k51DrCNAmKpL4Uit15pNEqe0/export?gid=0&format=csv")
 
@@ -84,7 +84,9 @@ for submission in r.subreddit("all").search(r_search_input, sort=r_search_sort, 
     #add upvote_ratio or score
     #add id/url to find post
 
-st.write(search_lst[0:10])#int(r_search_output)])
+r_search_df = pd.DataFrame({"submissions": search_lst})
+st.write(search_lst[0:r_search_output])
+st.table(r_search_df)
 
 #######################################################################################################################################################
 
