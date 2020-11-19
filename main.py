@@ -83,7 +83,7 @@ reddit_search_dict = {"title": [], "score": [], "url": []}#, "num_comments": [],
 for submission in r.subreddit("all").search(r_search_input, sort=r_search_sort, time_filter=r_search_time):
     reddit_search_dict["title"].append(submission.title)
     reddit_search_dict["score"].append(submission.score)
-    reddit_search_dict["permalink"].append(submission.permalink)
+    reddit_search_dict["url"].append(submission.permalink)
     #search_lst.append(submission.title)
     #add upvote_ratio or score
     #add id/url to find post
