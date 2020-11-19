@@ -24,33 +24,30 @@ st.markdown("* Show news subbreddits with information like subs, hot keywords & 
 st.write("----")
 st.write("# Reddit")
 
+# Load the login credentials and setup the Reddit API
 r_details = pd.read_csv("https://docs.google.com/spreadsheets/d/1WO4GedbP8xiNuLhZc20k51DrCNAmKpL4Uit15pNEqe0/export?gid=0&format=csv")
-
 r = praw.Reddit(client_id=r_details.client_id[0], client_secret=r_details.client_secret[0], user_agent='Henlo')
 
 ###########
 
-#st.markdown("**Relevant subreddits for any kind of news**")
+# Load the the data of the relevant subreddits about news 
 srds = pd.read_csv("https://github.com/svenrr/good_news_everyone/raw/main/Datasets/dataset_subreddits_for_eda/subreddits.csv",encoding="cp1252")
-with st.beta_expander('Relevant subreddits for any kind of news'):
+with st.beta_expander('Relevant subreddits for any kind of news'): # hide them 
     st.dataframe(srds)
 
-########
+##########
 
 st.write("We take the top 10 subreddits with the most subscribers and search for the top 10 hot topics in there. You can change that if you want.")
-
 srds_top10 = srds.sort_values(by=" subs",ascending=False)[0:10]
 st.dataframe(srds_top10)
 
-r_ms = st.multiselect("Select subreddits", [i for i in srds.reddit], default=[i for i in srds_top10.reddit])
+r_ms = st.multiselect("Select subreddits", [i for i in srds.reddit], default=[i for i in srds_top10.reddit]) # Enable selection of subreddits
 
-#subr_lst = [i for i in srds_top5.reddit]
-subr_lst = r_ms 
 topic_lst = []
 reddit_dict = {"subreddit": [], "title": [], "upvote_ratio": [], "num_comments": []}
 
-for subr in subr_lst:
-    for submission in r.subreddit(subr).hot(limit=10):
+for subr in r_ms: # For Subreddit in Subreddit-List 
+    for submission in r.subreddit(subr).hot(limit=10): # For Reddit-Post in Subreddit -> Top10 of hot posts 
         topic_lst.append(submission.title)
         reddit_dict["subreddit"].append(subr)
         reddit_dict["title"].append(submission.title)
@@ -60,8 +57,8 @@ for subr in subr_lst:
 
 st.write("Number of total submissions: {}".format(len(topic_lst)))
 
-with st.beta_expander('Show full text'):
-    st.write(topic_lst)
+with st.beta_expander('Show full text'): # Hide the output
+    st.table(reddit_dict["title"])
 
 reddit_df = pd.DataFrame(reddit_dict)
 st.dataframe(reddit_df)#.drop(columns="title", axis=0))
