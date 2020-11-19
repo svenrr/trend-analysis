@@ -30,11 +30,6 @@ st.markdown("[* Reddit](#reddit)")
 st.markdown("[* Google](#google)")
 st.markdown("[* Twitter](#twitter)")
 
-st.markdown("**ToDo:**")
-st.markdown("* Add cache")
-st.markdown("* Analyze comments with VaderScore")
-st.markdown("* Show news subbreddits with information like subs, hot keywords & trending topcis --> view documentation")
-
 #######################################################################################################################################################
 
 st.write("----")
@@ -79,7 +74,7 @@ with st.beta_expander('Show full text'): # Hide the output
     st.table(reddit_dict["title"])
     
 with st.beta_expander('Show more information'): # Show additional information like num. of comments
-    st.markdown(get_table_download_link(reddit_dict), unsafe_allow_html=True)
+    st.markdown(get_table_download_link(reddit_df), unsafe_allow_html=True)
     st.dataframe(reddit_df)#.drop(columns="title", axis=0)) 
 
 #st.write("Number of comments: ", reddit_df[reddit_df["subreddit"] == "WorldNews"].num_comments.sum(axis=0))
