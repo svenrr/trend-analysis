@@ -48,12 +48,12 @@ st.dataframe(srds_top10)
 
 r_ms = st.multiselect("Select subreddits", [i for i in srds.reddit], default=[i for i in srds_top10.reddit]) # Enable selection of subreddits
 
-#topic_lst = []
+topic_lst = []
 reddit_dict = {"subreddit": [], "title": [], "upvote_ratio": [], "num_comments": []}
 
 for subr in r_ms: # For Subreddit in Subreddit-List 
     for submission in r.subreddit(subr).hot(limit=10): # For Reddit-Post in Subreddit -> Top10 of hot posts 
-        #topic_lst.append(submission.title)
+        topic_lst.append(submission.title)
         reddit_dict["subreddit"].append(subr)
         reddit_dict["title"].append(submission.title)
         reddit_dict["upvote_ratio"].append(submission.upvote_ratio)
