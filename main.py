@@ -14,12 +14,18 @@ import tweepy
 st.write("# Trend topics & content ideas")
 st.write("In the following, different sources are used to quickly gain an overview of current topics in the world or a specific industry. These insights can also be used by journalists, bloggers, etc. to report on topics that are currently of particular interest and most talked about.")
 
+st.markdown("## Navigation")
+st.markdown("[* Reddit](#reddit)")
+st.markdown("[* Google](#google)")
+st.markdown("[* Twitter](#twitter)")
+
 st.markdown("**ToDo:**")
 st.markdown("* Add cache")
 st.markdown("* Analyze comments with VaderScore")
 st.markdown("* Show news subbreddits with information like subs, hot keywords & trending topcis --> view documentation")
 
 #######################################################################################################################################################
+
 st.write("----")
 st.write("# Reddit")
 
@@ -42,12 +48,12 @@ st.dataframe(srds_top10)
 
 r_ms = st.multiselect("Select subreddits", [i for i in srds.reddit], default=[i for i in srds_top10.reddit]) # Enable selection of subreddits
 
-topic_lst = []
+#topic_lst = []
 reddit_dict = {"subreddit": [], "title": [], "upvote_ratio": [], "num_comments": []}
 
 for subr in r_ms: # For Subreddit in Subreddit-List 
     for submission in r.subreddit(subr).hot(limit=10): # For Reddit-Post in Subreddit -> Top10 of hot posts 
-        topic_lst.append(submission.title)
+        #topic_lst.append(submission.title)
         reddit_dict["subreddit"].append(subr)
         reddit_dict["title"].append(submission.title)
         reddit_dict["upvote_ratio"].append(submission.upvote_ratio)
@@ -56,20 +62,21 @@ for subr in r_ms: # For Subreddit in Subreddit-List
 
 st.write("Number of total submissions: {}".format(len(topic_lst)))
 
-with st.beta_expander('Show full text'): # Hide the output
-    st.dataframe(reddit_dict["title"])
-
 reddit_df = pd.DataFrame(reddit_dict)
-st.dataframe(reddit_df)#.drop(columns="title", axis=0))
 
-st.write("Number of comments: ", reddit_df[reddit_df["subreddit"] == "WorldNews"].num_comments.sum(axis=0))
+with st.beta_expander('Show full text'): # Hide the output
+    st.table(reddit_dict["title"])
     
-#st.write("Top 10 keywords:")
-word_frequency(". ".join(topic_lst))
+with st.beta_expander('Show full text'): # Show additional information like num. of comments
+    st.dataframe(reddit_df)#.drop(columns="title", axis=0)) 
+
+#st.write("Number of comments: ", reddit_df[reddit_df["subreddit"] == "WorldNews"].num_comments.sum(axis=0))
+
+word_frequency(". ".join(topic_lst)) # Function to get top keywords & create a wordcloud
 
 #######################################################################################################################################################
 
-st.markdown("### Search posts about a specific keyword")
+st.markdown("## Search posts about a specific keyword")
 r_search_input = st.text_input("Enter a keyword", "bitcoin")
 r_search_sort = st.selectbox("Select sorting option", ["relevance", "hot", "top", "new", "comments"], key="r_search_sort")
 r_search_time = st.selectbox("Select time filter option", ["all", "day", "month", "week", "year"], key="r_search_time") 
@@ -92,6 +99,7 @@ r_search_df.drop(columns="url", axis=1, inplace=True)
 st.table(r_search_df.iloc[0:r_search_output])
 
 #######################################################################################################################################################
+st.markdown("# Google")
 
 st.write("----")
 st.write("## Google related queries")
@@ -121,18 +129,16 @@ interest_over_time = pytrend.build_payload(keywords, timeframe=sb_tf, geo="US", 
 iot = pd.DataFrame(pytrend.interest_over_time())
 iot.drop("isPartial",axis=1, inplace=True)
 
-st.dataframe(iot)
-
 st.line_chart(iot)
 
+with st.beta_expander('Show more details'): # Hide the output / dataframe which was used to create the lineplot
+    st.dataframe(iot)
+    st.markdown("**Interest by region**")
+    ibr = pytrend.interest_by_region(resolution='REGION', inc_low_vol=True, inc_geo_code=False)
+    st.dataframe(ibr)
 
 #########
-
-st.markdown("## Interest by region")
-ibr = pytrend.interest_by_region(resolution='REGION', inc_low_vol=True, inc_geo_code=False)
-st.dataframe(ibr)
-
-##########
+st.write("----")
 
 st.markdown("## Trending Searches (Real Time)")
 country = st.text_input("Enter a country","united_states", key="country")
@@ -149,8 +155,10 @@ rt.drop("exploreQuery",axis=1, inplace=True)
 st.dataframe(rt)
 
 #######################################################################################################################################################
+st.write("----")
+st.markdown("# Twitter")
 
-st.markdown("# Top10 Twitter Trending Topics (USA)")
+st.markdown("## Top10 Twitter Trending Topics (USA)")
 twitter_trends = pd.read_csv("https://docs.google.com/spreadsheets/d/1ZQmt6uL-MYrb8UacoOhRGaBTUzlelPOz6eti5kqeWWc/export?gid=0&format=csv")
 twitter_trends = twitter_trends.tail(10).reset_index(drop=True)
 st.write("Last update: {}".format(twitter_trends["date_time"][0]))
