@@ -91,7 +91,8 @@ for submission in r.subreddit("all").search(r_search_input, sort=r_search_sort, 
 test_title_text = f'[{reddit_search_dict["title"][0]}]({reddit_search_dict["url"][0]})'
 st.markdown(test_title_text)
     
-r_search_df = pd.DataFrame({"submissions": search_lst})
+r_search_df = pd.DataFrame({reddit_search_dict})
+r_search_df.drop(column="url", axis=1, inplace=True)
 #st.write(search_lst[0:r_search_output])
 st.table(r_search_df.iloc[0:r_search_output])
 
