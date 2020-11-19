@@ -61,6 +61,10 @@ st.write("Number of total submissions: {}".format(len(topic_lst)))
 if st.checkbox("Show full text"):
     st.write(topic_lst)
 
+st.beta_expander('Show full text')
+    with st.beta_expander('Show full text'):
+    st.write(topic_lst)
+
 reddit_df = pd.DataFrame(reddit_dict)
 st.dataframe(reddit_df)#.drop(columns="title", axis=0))
 
