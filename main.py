@@ -114,16 +114,13 @@ st.write("## Google related queries")
 pytrend = TrendReq()
 search_topic = st.text_input("Enter a keyword or topic...","Data Science",key="gtrend") 
 
-sb_torr = st.selectbox("Select one option", ["top", "rising"], key="sb_torr")
+sb_torr = st.selectbox("Select one option", ["top", "rising"], key="sb_torr") # top or rising?
+    
+pytrend.build_payload(kw_list=[search_topic])
+related_queries = pytrend.related_queries()
+rq_df = pd.DataFrame(related_queries.get(kw_list).get(sb_torr))
 
-def gtrends(keyword, torr): #top or rising?
-    pytrend.build_payload(kw_list=[keyword])
-    related_queries = pytrend.related_queries()
-    rq = pd.DataFrame(related_queries.get(keyword).get(torr))
-    return rq
-
-rq_data = gtrends(search_topic, sb_torr)
-st.dataframe(rq_data)
+st.dataframe(rq_df)
 
 #######
 
