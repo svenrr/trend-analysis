@@ -9,6 +9,7 @@ from word_frequency import word_frequency
 import praw
 import tweepy
 
+########################################################################################################################################################
 
 st.write("# Trend topics & content ideas")
 st.write("In the following, different sources are used to quickly gain an overview of current topics in the world or a specific industry. These insights can also be used by journalists, bloggers, etc. to report on topics that are currently of particular interest and most talked about.")
@@ -17,8 +18,6 @@ st.markdown("**ToDo:**")
 st.markdown("* Add cache")
 st.markdown("* Analyze comments with VaderScore")
 st.markdown("* Show news subbreddits with information like subs, hot keywords & trending topcis --> view documentation")
-
-#######################################################################################################################################################
 
 #######################################################################################################################################################
 st.write("----")
@@ -58,7 +57,7 @@ for subr in r_ms: # For Subreddit in Subreddit-List
 st.write("Number of total submissions: {}".format(len(topic_lst)))
 
 with st.beta_expander('Show full text'): # Hide the output
-    st.table(reddit_dict["title"])
+    st.dataframe(reddit_dict["title"])
 
 reddit_df = pd.DataFrame(reddit_dict)
 st.dataframe(reddit_df)#.drop(columns="title", axis=0))
