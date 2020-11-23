@@ -7,7 +7,7 @@ In the following webapp, different sources - Reddit, Twitter and Google Trends -
 The project was created by ["Good News Everyone"](https://github.com/svenrr/good_news_everyone) by trying out several possibilities. For this reason some of the functions can be found [there](https://share.streamlit.io/svenrr/gne-webapp-streamlit/main/main.py).
  
 
-**WebApp:** https://share.streamlit.io/svenrr/gne-trend-analysis/main/main.py
+**WebApp:** https://share.streamlit.io/svenrr/trend-analysis/main/main.py
 
 **ToDo**: 
 * Add cache function from streamlit 
